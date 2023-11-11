@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp3.win2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="Справка" Height="1599.901" Width="612.745">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="0,0,2,-3">
+
+            <TextBlock HorizontalAlignment="Left" Margin="20,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562"><Run Text="      Пусть имеется некоторый известный список всевозможных "/><Run Text="вариантов рекламы на различных площадках ("/><Run Text="Telegram"/><Run Text=" каналы"/><Run Text=", "/><Run Text="VK"/><Run Text=" сообщества, баннеры в общественных местах, флаеры и тд"/><Run Text=" ). Каждый из вариантов рекламы "/><Run Text="имеет два параметра – стоимость "/><Run Text="покупки"/><Run Text=" и "/><Run Text="охват ("/><Run Text="среднее "/><Run Text="количеств"/><Run Text="о"/><Run Text=" п"/><Run Text="росмотров"/><Run Text="). И есть ограниченный бюджет, определенный директором. Задача заключается в том, чтобы управляющему  выделить такой набор "/><Run Text="различной рекламы"/><Run Text=", "/><Run Text="закупка которой "/><Run Text=" принесет "/><Run Text="наибольшие возможные охваты потенциальных покупателей"/><Run Text=", соблюдая при этом денежное ограничение по бюджету."/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="20,127,0,0" TextWrapping="Wrap" Text="     Для решения поставленной задачи существует несколько эффективных алгоритмов. В данной программе используется алгоритм динамического программирования." VerticalAlignment="Top" Width="562"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,167,0,0" TextWrapping="Wrap" Text="     В основе метода динамического программирования лежит следующий принцип:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,188,0,0" TextWrapping="Wrap" Text="     Оптимальное решение на i шаге находится исходя из найденных ранее оптимальных решений на предшествующих шагах. Из этого следует, что для того чтобы найти оптимальное решение на последнем шаге надо сначала найти оптимальное решения для первого, затем для второго и так далее пока не пройдем все шаги до последнего." VerticalAlignment="Top" Width="562"/>
+            <TextBlock HorizontalAlignment="Left" Margin="59,281,0,0" TextWrapping="Wrap" Text="     Постановка задачи о ранце:" VerticalAlignment="Top" RenderTransformOrigin="0.498,0.398"/>
+            <TextBlock HorizontalAlignment="Left" Margin="59,307,0,0" TextWrapping="Wrap" Text="     Имеется набор из N предметов. Пусть MaxW - объем рюкзака, Pi – стоимость i-го предмета, Wi – вес i-го предмета. Value[W, i] – максимальная сумма, которую надо найти. Суть метода динамического программирования – на каждом шаге по весу 1 меньше Wi меньше W находим максимальную загрузку Value[Wi, i], для веса Wi. Допустим мы уже нашли Value[1..W, 1..i-1], то есть для веса меньше либо равного W и с предметами, взятыми из 1..N-1." VerticalAlignment="Top" Width="510"/>
+            <TextBlock HorizontalAlignment="Left" Margin="59,423,0,0" TextWrapping="Wrap" Text="     Рассмотрим предмет N, если его вес WN меньше W проверим стоит ли его брать.
+   Если его взять, то вес станет W-Wi , тогда Value[W, i] = Value[W – Wi , i-1] + Pi (для Value[W – Wi , i-1]) решение уже найдено остается только прибавить Pi.
+    Если его не брать, то вес останется тем же и Value[W , i] = Value[W – Wi, i-1]. Из двух вариантов выбирается тот, который дает наибольший результат. 
+" VerticalAlignment="Top" Width="501"/>
+            <TextBlock HorizontalAlignment="Left" Margin="59,522,0,0" TextWrapping="Wrap" Text="     Алгоритм динамического программирования задачи о рюкзаке дает точное решение путем использования дополнительной памяти O(N*MaxW), временная сложность алгоритма так же будет порядка O(N*MaxW).
+" VerticalAlignment="Top" Width="501"/>
+            <Button FontFamily="Segoe UI Light" FontSize="16" Content="Закрыть" Click="exit_Button_Click" Margin="466,1514,34,21"/>
+            <TextBlock HorizontalAlignment="Left" Margin="68,589,0,0" TextWrapping="Wrap" Text="Пример:" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="387" Margin="59,622,0,0" VerticalAlignment="Top" Width="234" Source="1ит.jpg"/>
+            <Image HorizontalAlignment="Left" Height="202" Margin="318,622,0,0" VerticalAlignment="Top" Width="234" Source="2ит.jpg"/>
+            <Image HorizontalAlignment="Left" Height="197" Margin="318,824,0,0" VerticalAlignment="Top" Width="264" Source="3ит.jpg"/>
+            <Image HorizontalAlignment="Left" Height="216" Margin="135,1026,0,0" VerticalAlignment="Top" Width="317" Source="4ит.jpg"/>
+            <Image HorizontalAlignment="Left" Height="216" Margin="135,1270,0,0" VerticalAlignment="Top" Width="317" Source="5ит.jpg"/>
+
+        </Grid>
+    </ScrollViewer>
+</Window>
